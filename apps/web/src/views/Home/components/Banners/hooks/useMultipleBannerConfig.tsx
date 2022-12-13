@@ -3,7 +3,6 @@ import shuffle from 'lodash/shuffle'
 import CompetitionBanner from '../CompetitionBanner'
 import IFOBanner from '../IFOBanner'
 import LotteryBanner from '../LotteryBanner'
-import PerpetualBanner from '../PerpetualBanner'
 import useIsRenderIfoBanner from './useIsRenderIFOBanner'
 import useIsRenderLotteryBanner from './useIsRenderLotteryBanner'
 import useIsRenderCompetitionBanner from './useIsRenderCompetitionBanner'
@@ -48,10 +47,6 @@ export const useMultipleBannerConfig = () => {
       {
         shouldRender: isRenderLotteryBanner,
         banner: <LotteryBanner />,
-      },
-      {
-        shouldRender: true,
-        banner: <PerpetualBanner />,
       },
     ]
     return [...NO_SHUFFLE_BANNERS, ...shuffle(SHUFFLE_BANNERS)]
