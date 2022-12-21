@@ -39,6 +39,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import Table from './components/FarmTable/FarmTable'
 import { FarmWithStakedValue } from './components/types'
 import { BCakeBoosterCard } from './components/BCakeBoosterCard'
+import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -156,7 +157,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
   const { data: farmsLP, userDataLoaded, poolLength, regularCakePerBlock } = useFarms()
-  const cakePrice = usePriceCakeBusd()
+  const cakePrice = BIG_ZERO
 
   const [_query, setQuery] = useState('')
   const normalizedUrlSearch = useMemo(() => (typeof urlQuery?.search === 'string' ? urlQuery.search : ''), [urlQuery])
@@ -238,6 +239,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           return latinise(farm.lpSymbol.toLowerCase()).includes(lowercaseQuery)
         })
       }
+      // console.log('farmsToDisplayWithAPR: ', farmsToDisplayWithAPR)
 
       return farmsToDisplayWithAPR
     },
@@ -254,18 +256,23 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
     let chosenFs = []
     if (isActive) {
       chosenFs = stakedOnly ? farmsList(stakedOnlyFarms) : farmsList(activeFarms)
+      // console.log('isActive')
     }
     if (isInactive) {
       chosenFs = stakedOnly ? farmsList(stakedInactiveFarms) : farmsList(inactiveFarms)
+      // console.log('isInactive')
     }
     if (isArchived) {
       chosenFs = stakedOnly ? farmsList(stakedArchivedFarms) : farmsList(archivedFarms)
+      // console.log('isArchived')
     }
 
     if (boostedOnly) {
       chosenFs = chosenFs.filter((f) => f.boosted)
+      // console.log('boostedOnly')
     }
 
+    // console.log('chosenFs: ', chosenFs)
     return chosenFs
   }, [
     activeFarms,
@@ -307,6 +314,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           return farms
       }
     }
+    // console.log('sortFarms: ', sortFarms)
 
     return sortFarms(chosenFarms).slice(0, numberOfFarmsVisible)
   }, [chosenFarms, sortOption, numberOfFarmsVisible])

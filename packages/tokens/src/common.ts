@@ -142,7 +142,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
 
 export const CAKE = {
   [ChainId.BSC]: CAKE_MAINNET,
-  [ChainId.BSC_TESTNET]: CAKE_TESTNET,
+  [ChainId.BSC_TESTNET]: USDC_TESTNET,
 }
 
 export const USDC = {
@@ -156,6 +156,7 @@ export const USDC = {
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
   [ChainId.ETHEREUM]: USDT_ETH,
+  [ChainId.BSC_TESTNET]: USDT_TESTNET,
 }
 
 export const WBTC_ETH = new ERC20Token(

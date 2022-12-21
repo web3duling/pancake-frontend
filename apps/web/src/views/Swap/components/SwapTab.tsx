@@ -45,7 +45,7 @@ export default function SwapTab({ children }) {
               replaceBrowserHistory('outputCurrency', null)
             }}
           >
-            {[t('Swap'), t('StableSwap')].map((content, idx) => (
+            {[t('Swap')].map((content, idx) => (
               <ButtonMenuItem
                 key={content}
                 style={{

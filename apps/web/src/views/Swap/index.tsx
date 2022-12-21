@@ -74,9 +74,7 @@ export default function Swap() {
             <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
               <AppBody>
                 <SwapTab>
-                  {(swapTypeState) =>
-                    swapTypeState === SwapType.STABLE_SWAP ? <StableSwapFormContainer /> : <SwapForm />
-                  }
+                  <SwapForm />
                 </SwapTab>
               </AppBody>
             </StyledInputCurrencyWrapper>

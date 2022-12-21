@@ -64,16 +64,16 @@ export default function SwapForm() {
   } = useSwapState()
   const inputCurrency = useCurrency(inputCurrencyId)
   const outputCurrency = useCurrency(outputCurrencyId)
-  const hasStableSwapAlternative = useMemo(() => {
-    return stableFarms.some((stableFarm) => {
-      const checkSummedToken0 = isAddress(stableFarm?.token0.address)
-      const checkSummedToken1 = isAddress(stableFarm?.token1.address)
-      return (
-        (checkSummedToken0 === inputCurrencyId || checkSummedToken0 === outputCurrencyId) &&
-        (checkSummedToken1 === outputCurrencyId || checkSummedToken1 === outputCurrencyId)
-      )
-    })
-  }, [stableFarms, inputCurrencyId, outputCurrencyId])
+  // const hasStableSwapAlternative = useMemo(() => {
+  //   return stableFarms.some((stableFarm) => {
+  //     const checkSummedToken0 = isAddress(stableFarm?.token0.address)
+  //     const checkSummedToken1 = isAddress(stableFarm?.token1.address)
+  //     return (
+  //       (checkSummedToken0 === inputCurrencyId || checkSummedToken0 === outputCurrencyId) &&
+  //       (checkSummedToken1 === outputCurrencyId || checkSummedToken1 === outputCurrencyId)
+  //     )
+  //   })
+  // }, [stableFarms, inputCurrencyId, outputCurrencyId])
 
   const currencies: { [field in Field]?: Currency } = useMemo(
     () => ({

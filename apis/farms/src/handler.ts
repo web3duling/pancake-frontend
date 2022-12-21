@@ -2,7 +2,7 @@ import { FixedNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { getFarmCakeRewardApr, SerializedFarmConfig } from '@pancakeswap/farms'
 import { ChainId, CurrencyAmount, Pair } from '@pancakeswap/sdk'
-import { BUSD, CAKE } from '@pancakeswap/tokens'
+import { USDT, USDC } from '@pancakeswap/tokens'
 import { farmFetcher } from './helper'
 import { FarmKV, FarmResult } from './kv'
 import { updateLPsAPR } from './lpApr'
@@ -41,9 +41,9 @@ const cakeBusdPairMap = {
     tokenB: BUSD[ChainId.BSC],
   },
   [ChainId.BSC_TESTNET]: {
-    address: Pair.getAddress(CAKE[ChainId.BSC_TESTNET], BUSD[ChainId.BSC_TESTNET]),
-    tokenA: CAKE[ChainId.BSC_TESTNET],
-    tokenB: BUSD[ChainId.BSC_TESTNET],
+    address: Pair.getAddress(USDC[ChainId.BSC_TESTNET], USDT[ChainId.BSC_TESTNET]),
+    tokenA: USDC[ChainId.BSC_TESTNET],
+    tokenB: USDT[ChainId.BSC_TESTNET],
   },
 }
 
